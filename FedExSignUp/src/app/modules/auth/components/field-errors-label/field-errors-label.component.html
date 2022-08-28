@@ -1,0 +1,64 @@
+<span
+  *ngIf="
+    constants.FirstName === field &&
+    formControl.invalid &&
+    (formControl.dirty || formControl.touched)
+  "
+>
+  <small
+    id="FirstName-1"
+    *ngIf="formControl.errors?.['required']"
+    class="p-error block"
+    >First Name is required</small>
+  <small
+    id="FirstName-2"
+    *ngIf="formControl.errors?.['pattern']"
+    class="p-error block"
+    >First Name should be only letters with length of at least 3
+  </small>
+</span>
+<span
+  *ngIf="
+    constants.LastName === field &&
+    formControl.invalid &&
+    (formControl.dirty || formControl.touched)
+  "
+>
+  <small
+    id="LastName-1"
+    *ngIf="formControl.errors?.['required']"
+    class="p-error block"
+    >Last Name is required</small
+  >
+  <small
+    id="LastName-2"
+    *ngIf="formControl.errors?.['pattern']"
+    class="p-error block"
+    >Last Name should be only letters with length of at least 3
+  </small>
+</span>
+<span
+  *ngIf="
+    constants.Email === field &&
+    formControl.invalid &&
+    (formControl.dirty || formControl.touched)
+  "
+>
+  <small
+    id="Email-1"
+    *ngIf="formControl.errors?.['required']"
+    class="p-error block"
+    >Email is required</small
+  >
+  <small
+    id="Email-2"
+    *ngIf="formControl.errors?.['pattern']"
+    class="p-error block">Format of an Email is name@mail.com
+  </small>
+  <small
+  id="Email-3"
+  *ngIf="formControl.errors?.['mailNotExist']"
+  class="p-error block">Email is not valid You need to input a valid mail
+</small>
+</span>
+

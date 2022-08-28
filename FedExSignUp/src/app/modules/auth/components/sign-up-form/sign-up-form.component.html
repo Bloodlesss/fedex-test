@@ -1,0 +1,79 @@
+<h2>Registration Form</h2>
+<form
+  [formGroup]="signUpFormGroup"
+  class="card flex flex-column justify-content-center"
+  (submit)="onSubmit()"
+>
+  <h4 for="firstName">First Name</h4>
+  <div class="field">
+    <input
+      class="inputText"
+      formControlName="firstName"
+      id="firstName"
+      type="text"
+      onfocus=""
+      pInputText
+    />
+    <fed-field-errors-label
+      [formGroup]="signUpFormGroup"
+      [field]="constants.FirstName"
+    ></fed-field-errors-label>
+  </div>
+  <div class="field">
+    <h4 for="lastName">Last Name</h4>
+    <input
+      class="inputText"
+      formControlName="lastName"
+      id="lastName"
+      type="text"
+      pInputText
+    />
+    <fed-field-errors-label
+      [formGroup]="signUpFormGroup"
+      [field]="constants.LastName"
+    ></fed-field-errors-label>
+  </div>
+  <div class="field">
+    <h4 for="email">Email</h4>
+    <input
+      class="inputText"
+      formControlName="email"
+      id="float-input"
+      type="text"
+      pInputText
+    />
+    <fed-field-errors-label
+      [formGroup]="signUpFormGroup"
+      [field]="constants.Email"
+    ></fed-field-errors-label>
+  </div>
+  <div class="field">
+    <!-- CHECK PASSWORD WIDTH -->
+    <h4 for="float-input">Password</h4>
+    <p-password
+      [toggleMask]="true"
+      formControlName="password"
+    >
+      <ng-template pTemplate="header">
+        <p class="mt-2">Password validation</p>
+        <p-divider></p-divider>
+        <ul class="pl-2 ml-2 mt-0" style="line-height: 1.5">
+          <li>Should be a minimum of EIGHT characters</li>
+          <li>Should contain at least one UPPERCASE letter</li>
+          <li>Should contain at least one LOWERCASE letter</li>
+          <li>Should not contain FIRST NAME</li>
+          <li>Should not contain LAST NAME</li>
+        </ul>
+      </ng-template>
+    </p-password>
+  </div>
+  <div class="flex justify-content-center align-items-center">
+    <p-button
+      [disabled]="signUpFormGroup.invalid"
+      pRipple
+      class="submit"
+      label="Submit"
+      type="submit"
+    ></p-button>
+  </div>
+</form>

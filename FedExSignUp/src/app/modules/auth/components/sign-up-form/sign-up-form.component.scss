@@ -1,0 +1,24 @@
+:host {
+  padding: 30px;
+  width: 300px;
+  background-color: white;
+  border-radius: 10px;
+  ::ng-deep .p-password input{
+    width: 240px;
+  }
+}
+h2,
+h4 {
+  margin-bottom: 0.25em;
+  margin-top: 0.25em;
+}
+.inputText {
+  width: 240px;
+}
+.submit {
+  margin-top: 0.5em;
+  // background: rgb(77, 20, 140);
+}
+.passwordInput {
+  width: 100%;
+}
