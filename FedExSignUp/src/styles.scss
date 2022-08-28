@@ -18,29 +18,4 @@ body {
   color: red !important;
 }
 
-.p-password {
-  width: 100%;
 
-  &:enabled:focus {
-    box-shadow: none !important; // sass-lint:disable-line no-important
-  }
-
-  .p-password-input {
-    width: 100%;
-  }
-
-  .pi-eye {
-    background-color: transparent;
-  }
-
-  .fc-password.ng-dirty.ng-invalid & { // sass-lint:disable-line force-element-nesting
-    .p-inputtext {
-    }
-  }
-
-  .requirements {
-    &__list {
-      padding-left: 18px;
-    }
-  }
-}

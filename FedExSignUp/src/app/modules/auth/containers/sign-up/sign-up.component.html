@@ -1,2 +1,5 @@
-<img id="image-truck" src="./assets/sign-up/logo.png">
-<fed-sign-up-form ></fed-sign-up-form>
+<ng-container *ngIf="state===stateEnum.signUp">
+  <img id="image-truck" src="./assets/sign-up/logo.png" />
+  <fed-sign-up-form (signedUpUserFunction)="onSubmit($event)"></fed-sign-up-form>
+</ng-container>
+<fed-user-reception (changeState)="changeStateToSignUp()" [userInfo]="userInfo" *ngIf="state===stateEnum.showUser"></fed-user-reception>

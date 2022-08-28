@@ -8,14 +8,13 @@
   <div class="field">
     <input
       class="inputText"
-      formControlName="firstName"
-      id="firstName"
+      [formControlName]="constants.FirstName"
       type="text"
       onfocus=""
       pInputText
     />
     <fed-field-errors-label
-      [formGroup]="signUpFormGroup"
+      [formController]="signUpFormGroup.get(constants.FirstName)"
       [field]="constants.FirstName"
     ></fed-field-errors-label>
   </div>
@@ -23,13 +22,12 @@
     <h4 for="lastName">Last Name</h4>
     <input
       class="inputText"
-      formControlName="lastName"
-      id="lastName"
+      [formControlName]="constants.LastName"
       type="text"
       pInputText
     />
     <fed-field-errors-label
-      [formGroup]="signUpFormGroup"
+      [formController]="signUpFormGroup.get(constants.LastName)"
       [field]="constants.LastName"
     ></fed-field-errors-label>
   </div>
@@ -37,13 +35,13 @@
     <h4 for="email">Email</h4>
     <input
       class="inputText"
-      formControlName="email"
+      [formControlName]="constants.Email"
       id="float-input"
       type="text"
       pInputText
     />
     <fed-field-errors-label
-      [formGroup]="signUpFormGroup"
+      [formController]="signUpFormGroup.get(constants.Email)"
       [field]="constants.Email"
     ></fed-field-errors-label>
   </div>
@@ -51,8 +49,7 @@
     <!-- CHECK PASSWORD WIDTH -->
     <h4 for="float-input">Password</h4>
     <p-password
-      [toggleMask]="true"
-      formControlName="password"
+      [formControlName]="constants.Password"
     >
       <ng-template pTemplate="header">
         <p class="mt-2">Password validation</p>

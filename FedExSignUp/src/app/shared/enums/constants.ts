@@ -3,4 +3,8 @@ export enum Constants {
   LastName='lastName',
   Email='email',
   Password='password',
+  firstName='firstName',
+  lastName='lastName',
+  email='email',
+  password='password'
 }

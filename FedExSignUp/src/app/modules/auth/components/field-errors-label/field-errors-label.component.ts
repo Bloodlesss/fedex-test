@@ -16,24 +16,14 @@ import { Constants } from 'src/app/shared/enums/constants';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FieldErrorsLabelComponent implements OnInit {
-  @Input() formGroup!: FormGroup;
-  @Input() field!: Constants;
+  @Input() field!: string;
   public constants = Constants;
-  public formControl!: FormControl;
+  @Input() formController!: AbstractControl | null;
   constructor(private changeRef: ChangeDetectorRef) {}
 
   ngOnInit(): void {
-    this.formControl = <FormControl>this.formGroup.get(this.field);
-    console.log(
-      this.constants.FirstName === this.field &&
-        this.formGroup.invalid &&
-        (this.formGroup.dirty || this.formGroup.touched)
-    );
-    merge(
-      this.formControl.valueChanges,
-      this.formControl.statusChanges
-    ).subscribe((): void => {
-      this.changeRef.markForCheck();
+      this.formController?.valueChanges.subscribe((): void => {
+      this.changeRef.detectChanges();
     });
   }
 }

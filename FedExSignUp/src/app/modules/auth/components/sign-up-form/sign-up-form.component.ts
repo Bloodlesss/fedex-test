@@ -1,8 +1,9 @@
 import {
   ChangeDetectionStrategy,
-  ChangeDetectorRef,
   Component,
+  EventEmitter,
   OnInit,
+  Output,
 } from '@angular/core';
 import {
   FormGroup,
@@ -10,7 +11,8 @@ import {
   FormBuilder,
   FormControl,
 } from '@angular/forms';
-import { merge, Observable } from 'rxjs';
+import { Router } from '@angular/router';
+import { merge, Observable, Subject } from 'rxjs';
 import { Constants } from 'src/app/shared/enums/constants';
 import { FieldsRegex } from 'src/app/shared/enums/fields-regex';
 import { SignedUpUser } from 'src/app/shared/models/signed-up-user';
@@ -27,11 +29,12 @@ export class SignUpFormComponent implements OnInit {
   public constants = Constants;
   private readonly regex: FieldsRegex = new FieldsRegex();
   signUpFormGroup!: FormGroup;
+  @Output() signedUpUserFunction: EventEmitter<SignedUpUser> =
+    new EventEmitter<SignedUpUser>();
   constructor(
     private readonly formBuilder: FormBuilder,
     private validatorService: FieldValidatorService,
     private apiService: ApiRequestsService,
-    private readonly changeDetectorRef: ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {
@@ -57,22 +60,15 @@ export class SignUpFormComponent implements OnInit {
       firstNameControl.valueChanges as Observable<string>,
       lastNameControl.valueChanges as Observable<string>
     ).subscribe((): void => {
-      this.changeDetectorRef.markForCheck();
-      this.changeDetectorRef.detectChanges();
       passwordControl.updateValueAndValidity();
-    });
-    passwordControl.valueChanges.subscribe(() => {
-      this.changeDetectorRef.markForCheck();
-      this.changeDetectorRef.detectChanges();
     });
   }
   public onSubmit(): void {
     // Process checkout data here
-    console.log('the User is being added', this.signUpFormGroup.value);
     this.apiService
       .userSignUp(this.signUpFormGroup.value)
       .subscribe((userInfo: SignedUpUser) => {
-        console.log('the user has been added', userInfo);
+        this.signedUpUserFunction.emit(userInfo);
       });
   }
   intializeFormGroup(): FormGroup {
