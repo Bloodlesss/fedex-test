@@ -22,7 +22,7 @@ export class ApiRequestsService {
       `${environment.emailVerificationUrl}`,
       {
         headers:{
-          apikey:"q4XR0TkUokfb10x8m3dGjAbihVjIk1hZ"
+          apikey:environment.emailVerificationKey
         },
         params: {
           email: email,

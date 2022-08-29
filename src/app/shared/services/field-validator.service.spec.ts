@@ -172,38 +172,38 @@ fdescribe('FieldValidatorService', () => {
     });
 
 
-    // it('should return not exist validation error when smtp_check is false', (done: DoneFn): void => {
-    //   verifyEmailObservable=of({
-    //     ...MockDataVerification,
-    //     smtp_check:false,
-    //   });
-    //   mockedApiService.verifyEmail.and.returnValue(
-    //     <Observable<EmailVerification>>verifyEmailObservable
-    //   );
-    //   (<Observable<ValidationErrors>>(
-    //     service.verifyEmailAsync(mockedEmailControl)
-    //   )).subscribe((result: ValidationErrors): void => {
-    //     console.log(result);
-    //     expect(result).toEqual(mockedEmailDoesNotExisit);
-    //     done();
-    //   });
-    // });
-    // it('should return null when smtp_check is true and mx_found is true', (done: DoneFn): void => {
-    //   verifyEmailObservable=of({
-    //     ...MockDataVerification,
-    //     smtp_check:true,
-    //     mx_found:true,
-    //   });
-    //   mockedApiService.verifyEmail.and.returnValue(
-    //     <Observable<EmailVerification>>verifyEmailObservable
-    //   );
-    //   (<Observable<ValidationErrors>>(
-    //     service.verifyEmailAsync(mockedEmailControl)
-    //   )).subscribe((result: ValidationErrors): void => {
-    //     console.log(result);
-    //     expect(result).toEqual(mockedEmailDoesNotExisit);
-    //     done();
-    //   });
-    // });
+    it('should return not exist validation error when smtp_check is false', (done: DoneFn): void => {
+      verifyEmailObservable=of({
+        ...MockDataVerification,
+        smtp_check:false,
+      });
+      mockedApiService.verifyEmail.and.returnValue(
+        <Observable<EmailVerification>>verifyEmailObservable
+      );
+      (<Observable<ValidationErrors>>(
+        service.verifyEmailAsync(mockedEmailControl)
+      )).subscribe((result: ValidationErrors): void => {
+        console.log(result);
+        expect(result).toEqual(mockedEmailDoesNotExisit);
+        done();
+      });
+    });
+    it('should return null when smtp_check is true and mx_found is true', (done: DoneFn): void => {
+      verifyEmailObservable=of({
+        ...MockDataVerification,
+        smtp_check:true,
+        mx_found:true,
+      });
+      mockedApiService.verifyEmail.and.returnValue(
+        <Observable<EmailVerification>>verifyEmailObservable
+      );
+      (<Observable<ValidationErrors>>(
+        service.verifyEmailAsync(mockedEmailControl)
+      )).subscribe((result: ValidationErrors): void => {
+        console.log(result);
+        expect(result).toEqual(mockedEmailDoesNotExisit);
+        done();
+      });
+    });
   });
 });
