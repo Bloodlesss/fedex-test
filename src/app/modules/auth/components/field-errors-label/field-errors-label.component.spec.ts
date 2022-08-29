@@ -14,7 +14,6 @@ describe('FieldErrorsLabelComponent', () => {
   const mockedFormController: AbstractControl = new FormControl('');
 
   beforeEach(async () => {
-
     await TestBed.configureTestingModule({
       declarations: [FieldErrorsLabelComponent]
     }).compileComponents();
@@ -31,6 +30,12 @@ describe('FieldErrorsLabelComponent', () => {
       const spy = spyOn((component as any).changeRef, 'detectChanges');
       mockedFormController.patchValue('test');
       expect(spy).toHaveBeenCalled();
+    });
+  });
+  describe('toUpperCase', () => {
+    it('should make the first letter of the word as capital and split it on capital Letters ', () => {
+      const result=component.toUpperCase("lastName");
+      expect(result).toEqual("Last Name");
     });
   });
 });

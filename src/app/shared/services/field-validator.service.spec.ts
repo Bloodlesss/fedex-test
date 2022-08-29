@@ -9,7 +9,7 @@ import { SignUpState } from '../enums/sign-up-state';
 import { EmailVerification } from '../models/email-verification';
 import { MockDataVerification } from 'src/specs/mock-data';
 
-fdescribe('FieldValidatorService', () => {
+describe('FieldValidatorService', () => {
   let service: FieldValidatorService;
   let mockedApiService: Spied<ApiRequestsService>;
   const mockedregex: FieldsRegex = new FieldsRegex();
