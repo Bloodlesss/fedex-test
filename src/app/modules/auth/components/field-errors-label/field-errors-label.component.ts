@@ -22,8 +22,14 @@ export class FieldErrorsLabelComponent implements OnInit {
 
   ngOnInit(): void {
       this.formController?.valueChanges.subscribe((): void => {
-        console.log("asdasd");
       this.changeRef.detectChanges();
     });
+  }
+  toUpperCase(value:string){
+    return value.replace(/([A-Z])/g, ' $1')
+  .replace(/^./, (str) => {
+    return str.toUpperCase();
+  })
+
   }
 }

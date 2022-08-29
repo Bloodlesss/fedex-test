@@ -5,20 +5,20 @@
   "
 >
   <small *ngIf="formController?.errors?.['required']" class="p-error block"
-    >{{ field }} is required</small
+    >{{ toUpperCase(field) }} is required</small
   >
   <small *ngIf="formController?.errors?.['pattern']" class="p-error block">
     <ng-container *ngIf="constants.Email === field">
-      Format of an {{ field }} is name@mail.com
+      Format of an {{ toUpperCase(field) }} is name@mail.com
     </ng-container>
     <ng-container *ngIf="constants.Email !== field">
-      {{ field }} should be only letters with length of at least 3</ng-container
+      {{ toUpperCase(field) }} should be only letters with length of at least 3</ng-container
     >
   </small>
   <small
     id="Email-3"
     *ngIf="formController?.errors?.['mailNotExist']"
     class="p-error block"
-    >{{ field }} is not valid You need to input a valid mail
+    >{{ toUpperCase(field) }} is not valid You need to input a valid mail
   </small>
 </span>

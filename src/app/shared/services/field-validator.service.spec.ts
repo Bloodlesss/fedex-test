@@ -165,7 +165,6 @@ fdescribe('FieldValidatorService', () => {
       (<Observable<ValidationErrors>>(
         service.verifyEmailAsync(mockedEmailControl)
       )).subscribe((result: ValidationErrors): void => {
-        console.log(result);
         expect(result).toEqual(mockedEmailDoesNotExisit);
         done();
       });
@@ -183,7 +182,6 @@ fdescribe('FieldValidatorService', () => {
       (<Observable<ValidationErrors>>(
         service.verifyEmailAsync(mockedEmailControl)
       )).subscribe((result: ValidationErrors): void => {
-        console.log(result);
         expect(result).toEqual(mockedEmailDoesNotExisit);
         done();
       });
@@ -200,7 +198,6 @@ fdescribe('FieldValidatorService', () => {
       (<Observable<ValidationErrors>>(
         service.verifyEmailAsync(mockedEmailControl)
       )).subscribe((result: ValidationErrors): void => {
-        console.log(result);
         expect(result).toEqual(mockedEmailDoesNotExisit);
         done();
       });

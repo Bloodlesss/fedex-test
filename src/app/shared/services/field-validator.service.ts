@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
-import { Password } from 'primeng/password';
-import { Observable, pipe, first, map, catchError, of } from 'rxjs';
+import { Observable, pipe, first, map, catchError, of, Subject } from 'rxjs';
 import { ApiRequestsService } from 'src/app/modules/auth/services/api-requests.service';
 import { FieldsRegex } from '../enums/fields-regex';
 import { EmailVerification } from '../models/email-verification';
@@ -11,6 +10,7 @@ import { EmailVerification } from '../models/email-verification';
 })
 export class FieldValidatorService {
   private readonly regex: FieldsRegex = new FieldsRegex();
+  public loading: Subject<boolean> = new Subject<boolean>();
   constructor(private apiRequest: ApiRequestsService) {}
 
   public ValidatePassword(
@@ -45,18 +45,20 @@ export class FieldValidatorService {
     control: AbstractControl
   ): Observable<ValidationErrors | null> {
     const emailDoesNotExisit: ValidationErrors = { mailNotExist: true };
+    this.loading.next(true);
     return this.apiRequest.verifyEmail(control.value).pipe(
       first(),
       map((response: EmailVerification): ValidationErrors | null => {
+        this.loading.next(false);
         if (!response.mx_found || !response.smtp_check) {
           return emailDoesNotExisit;
         }
-
         return null;
       }),
-      catchError(
-        (): Observable<ValidationErrors> => of(emailDoesNotExisit)
-      )
+      catchError((): Observable<ValidationErrors> => {
+        this.loading.next(false);
+        return of(emailDoesNotExisit);
+      })
     );
   }
 }

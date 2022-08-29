@@ -1,5 +1,6 @@
 import {
   ChangeDetectionStrategy,
+  ChangeDetectorRef,
   Component,
   EventEmitter,
   OnInit,
@@ -11,8 +12,7 @@ import {
   FormBuilder,
   FormControl,
 } from '@angular/forms';
-import { Router } from '@angular/router';
-import { merge, Observable, Subject } from 'rxjs';
+import { merge, Observable  } from 'rxjs';
 import { Constants } from 'src/app/shared/enums/constants';
 import { FieldsRegex } from 'src/app/shared/enums/fields-regex';
 import { SignedUpUser } from 'src/app/shared/models/signed-up-user';
@@ -27,17 +27,23 @@ import { ApiRequestsService } from '../../services/api-requests.service';
 })
 export class SignUpFormComponent implements OnInit {
   public constants = Constants;
+  public pending:boolean=false;
   private readonly regex: FieldsRegex = new FieldsRegex();
   signUpFormGroup!: FormGroup;
   @Output() signedUpUserFunction: EventEmitter<SignedUpUser> =
     new EventEmitter<SignedUpUser>();
   constructor(
     private readonly formBuilder: FormBuilder,
-    private validatorService: FieldValidatorService,
+    public validatorService: FieldValidatorService,
     private apiService: ApiRequestsService,
+    private  changeDetectorRef: ChangeDetectorRef,
   ) {}
 
   ngOnInit(): void {
+    this.validatorService.loading.subscribe((state:boolean)=>{
+      this.pending=state;
+      this.changeDetectorRef.markForCheck();
+    })
     this.signUpFormGroup = this.intializeFormGroup();
     let firstNameControl: FormControl = <FormControl>(
       this.signUpFormGroup.get(Constants.FirstName)
@@ -65,10 +71,12 @@ export class SignUpFormComponent implements OnInit {
   }
   public onSubmit(): void {
     // Process checkout data here
+    this.pending=true;
     this.apiService
       .userSignUp(this.signUpFormGroup.value)
       .subscribe((userInfo: SignedUpUser) => {
         this.signedUpUserFunction.emit(userInfo);
+        this.pending=false;
       });
   }
   intializeFormGroup(): FormGroup {
@@ -96,4 +104,5 @@ export class SignUpFormComponent implements OnInit {
       [Constants.Password]: [''],
     });
   }
+
 }
