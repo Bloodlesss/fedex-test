@@ -5,8 +5,7 @@ import {
   Input,
   OnInit,
 } from '@angular/core';
-import { AbstractControl, FormControl, FormGroup } from '@angular/forms';
-import { merge } from 'rxjs';
+import { AbstractControl } from '@angular/forms';
 import { Constants } from 'src/app/shared/enums/constants';
 
 @Component({
@@ -23,6 +22,7 @@ export class FieldErrorsLabelComponent implements OnInit {
 
   ngOnInit(): void {
       this.formController?.valueChanges.subscribe((): void => {
+        console.log("asdasd");
       this.changeRef.detectChanges();
     });
   }

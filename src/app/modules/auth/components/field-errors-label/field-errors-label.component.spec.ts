@@ -12,30 +12,25 @@ describe('FieldErrorsLabelComponent', () => {
   let fixture: ComponentFixture<FieldErrorsLabelComponent>;
   const mockedfield: string = 'field';
   const mockedFormController: AbstractControl = new FormControl('');
-  let mockedChangeDetectorRef:Spied<ChangeDetectorRef>;
 
   beforeEach(async () => {
-    mockedChangeDetectorRef=jasmine.createSpyObj('ChangeDetectorRef',['markForCheck']);
+
     await TestBed.configureTestingModule({
-      declarations: [FieldErrorsLabelComponent],
-      providers:[{
-        provide:ChangeDetectorRef,
-        useValue:mockedChangeDetectorRef
-      }]
+      declarations: [FieldErrorsLabelComponent]
     }).compileComponents();
     fixture = TestBed.createComponent(FieldErrorsLabelComponent);
-
     component = fixture.componentInstance;
     component.field = mockedfield;
-    component.formController=mockedFormController;
+    component.formController = mockedFormController;
 
     fixture.detectChanges();
   });
 
   describe('ngOnInit', () => {
     it('should call mark for check on formController valueChanges ', () => {
+      const spy = spyOn((component as any).changeRef, 'detectChanges');
       mockedFormController.patchValue('test');
-      expect(mockedChangeDetectorRef.markForCheck).toHaveBeenCalledTimes(1);
+      expect(spy).toHaveBeenCalled();
     });
   });
 });
