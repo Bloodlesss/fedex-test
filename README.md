@@ -10,9 +10,7 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 
 Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Running end-to-end tests
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
 ### Install Angular/cli
 
@@ -32,6 +30,9 @@ To install `angular/cli` we are using version `~14.2.0`, run
 
 After running `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
+## Running end-to-end tests
+
+Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 ## Running unit tests
 
 Run `ng test --code-coverage` to execute the unit tests via [Karma](https://karma-runner.github.io), you can also check [Angular Testing](https://angular.io/guide/testing)
