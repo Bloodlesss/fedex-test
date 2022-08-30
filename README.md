@@ -116,4 +116,4 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ## OwnerShip
 
-I do not own any of the images used in the app, this app is not designed to be used to commercial use and is only deployed for the specific purpose to fulfil FedEx Intreview Requirments.
+I do not own any of the images used in the app, this app is not designed to be used for commercial use and is only deployed for the specific purpose to fulfil FedEx Intreview Requirments.
