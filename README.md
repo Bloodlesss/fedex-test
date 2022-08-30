@@ -113,3 +113,7 @@ the project has *required requirements* and added *Extra Features* that have bee
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+## OwnerShip
+
+I do not own any of the images used in the app, this app is not designed to be used to commercial use and is only deployed for the specific purpose to fulfil FedEx Intreview Requirments.
