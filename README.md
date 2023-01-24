@@ -94,7 +94,7 @@ the project has *required requirements* and added *Extra Features* that have bee
 ### Application Level:
 
 - Deployed the application on Netlify. [https://fed-ex-sign-up-form.netlify.app/](https://fed-ex-sign-up-form.netlify.app/).
-- Deployed the application on GitHub. [https://github.com/Bloodlesss/fedex-test](https://github.com/Bloodlesss/fedex-test).
+- Deployed the application on GitHub. [https://github.com/Bloodlesss/sign-up-page](https://github.com/Bloodlesss/sign-up-page).
 - Used [primeNg](https://www.primefaces.org/primeng) library that is built on angular material to be able to provide a wider variaty of choices in design.
 - Added a loader to compensate the  gap in time between sending and recieving the HttpRequests.
 - Added a Page that loads the returned result of the POST REQUEST to display the user his account credentials.
@@ -117,4 +117,4 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ## OwnerShip
 
-I do not own any of the images used in the app, this app is not designed to be used for commercial use and is only deployed for the specific purpose to fulfil FedEx Intreview Requirments.
+I do not own any of the images used in the app, this app is not designed to be used for commercial use and is only deployed for the specific purpose to show the level of angular developement. 
